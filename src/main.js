@@ -6,7 +6,6 @@ import {
   clearGallery,
   showLoader,
   hideLoader,
-  getBoundingClientRect,
 } from './js/render-functions';
 
 const form = document.querySelector('.form');
@@ -90,7 +89,6 @@ async function onLoadMore() {
     }
 
     createGallery(data.hits);
-    getBoundingClientRect();
 
     if (page < totalPages) {
       loadMore.classList.remove('load-more-hidden');
