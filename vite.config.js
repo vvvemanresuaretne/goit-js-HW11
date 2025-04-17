@@ -17,6 +17,8 @@ export default defineConfig(({ command }) => {
       sourcemap: true,
       rollupOptions: {
         input: inputFiles.length ? inputFiles : './src/index.html',
+        external: ['fsevents'],
+
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
