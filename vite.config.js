@@ -17,8 +17,7 @@ export default defineConfig(({ command }) => {
       sourcemap: true,
       rollupOptions: {
         input: inputFiles.length ? inputFiles : './src/index.html',
-        external: ['fsevents'],
-
+        external: ['fsevents', 'rollup', 'node:path'],
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
@@ -31,6 +30,9 @@ export default defineConfig(({ command }) => {
       },
       outDir: '../dist',
       emptyOutDir: true,
+    },
+    optimizeDeps: {
+      exclude: ['rollup'],
     },
     plugins: [
       injectHTML(),
