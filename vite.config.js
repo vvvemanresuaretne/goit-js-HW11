@@ -9,6 +9,7 @@ export default defineConfig(({ command }) => {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
+    base: '/goit-js-HW11/', // ВАЖНО: путь к репозиторию на GitHub
     root: 'src',
     build: {
       sourcemap: true,
