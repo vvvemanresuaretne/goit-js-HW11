@@ -9,12 +9,11 @@ export default defineConfig(({ command }) => {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
-    base: '/goit-js-HW11/', // ВАЖНО: путь к репозиторию на GitHub
-    root: 'src',
+    base: '/goit-js-HW11/',
     build: {
       sourcemap: true,
       rollupOptions: {
-        input: glob.sync('./src/*.html'),
+        input: glob.sync('./*.html'), // ищет html в корне
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
@@ -35,12 +34,12 @@ export default defineConfig(({ command }) => {
           },
         },
       },
-      outDir: '../dist',
+      outDir: 'dist',
       emptyOutDir: true,
     },
     plugins: [
       injectHTML(),
-      FullReload(['./src/**/**.html']),
+      FullReload(['./**/*.html']),
       SortCss({
         sort: 'mobile-first',
       }),
